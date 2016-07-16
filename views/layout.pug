@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        title Nightlight Coordinator
+        meta(http-equiv='X-UA Compatible' content='IE=Edge;chrome=1')
+        meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no')
+        //- link(rel='icon' type='image/png' href='favicon.png')
+        link(rel='stylesheet' href='/css/normalize.css' type='text/css')
+        link(rel='stylesheet' href='/css/skeleton.css' type='text/css')
+        link(href='/css/content.css' rel='stylesheet')
+        script(src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous")
+        script(src='/js/post.js')
+
+    body
+        .row
+            .nine.columns
+                .container
+                    .flex-center.fullscreen
+                        block content
+
+            .three.columns.purple.fullscreen
+                div
+                    a(href='/')
+                        button.button-primary Home
+                    a(href='/about')
+                        button.button-primary About
+                    if (!loggedIn)
+                        a(href='/login')
+                            button.button-primary Login / Register
+                    else
+                        a(href='/logout')
+                            button.button-primary Logout
+                footer Moon vector from Freepik.
+                    |  Website by 
+                    a(href='https://www.freecodecamp.com/cinders-p') Cinders-P

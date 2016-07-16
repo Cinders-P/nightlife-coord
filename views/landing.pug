@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    form.row(action='/search')
+        include logo
+        .seven.columns.flex-center
+            input(type='text' name='city' placeholder='Enter a city name...')
+            button.button Submit

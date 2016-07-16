@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    .flex-center-mod.pad-top.fullscreen
+        form.row(action='/search')
+            include logo
+            .seven.columns.flex-center
+                input(type='text' name='city' placeholder='Enter a city name...' required)
+                button.button Submit
+        .flex-results
+            p.listing=newCity ? 'Displaying results for ' + newCity : 'No results found. Try searching with different keywords.'
+            if nameArr && nameArr.length
+                each val, index in nameArr
+                    div.listing.row
+                        .eight.columns
+                            h4=val
+                                if glowArr[index]
+                                    .button.marg-left.glow(name=idArr[index]) #{goingArr[index] + ' Going'}
+                                else
+                                    .button.marg-left(name=idArr[index]) #{goingArr[index] + ' Going'}
+                            - let n = 0
+                            - let dollars = ''
+                            while n++ < priceArr[index]
+                                - dollars += '$'
+                            p.meta-info !{addressArr[index] + '<br>' + cuisineArr[index] + '<br>' + ratingArr[index] + ' Stars | ' + dollars}
+                        if photoArr[index]
+                            a.four.columns(href=urlArr[index] target='_blank')
+                                img.twelve.columns(src=photoArr[index])
+                        else
+                            .four.columns
+                    hr
